@@ -28,8 +28,10 @@ public class EncryUtils {
     static  EncryUtils encryUtilsInstance;
     KeyStore keyStore;
     public static EncryUtils getInstance() {
-        if (null == encryUtilsInstance) {
-            encryUtilsInstance = new EncryUtils();
+        synchronized (EncryUtils.class) {
+            if (null == encryUtilsInstance) {
+                encryUtilsInstance = new EncryUtils();
+            }
         }
         return encryUtilsInstance;
     }
