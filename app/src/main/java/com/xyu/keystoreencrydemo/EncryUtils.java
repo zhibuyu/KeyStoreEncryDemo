@@ -107,8 +107,13 @@ public class EncryUtils {
                     return encryptStr;
                 }
 
-//            Cipher inCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "AndroidOpenSSL");
-                Cipher inCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+
+                Cipher inCipher;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                     inCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "AndroidOpenSSL");
+                }else {
+                    inCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+                }
 //            inCipher.init(Cipher.ENCRYPT_MODE, publicKey);
                 inCipher.init(Cipher.ENCRYPT_MODE, privateKeyEntry.getCertificate().getPublicKey());
 
