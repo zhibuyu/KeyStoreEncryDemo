@@ -112,6 +112,7 @@ public class EncryUtils {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                      inCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding", "AndroidOpenSSL");
                 }else {
+                    //若加密慢则改用上面的代码
                     inCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
                 }
 //            inCipher.init(Cipher.ENCRYPT_MODE, publicKey);
